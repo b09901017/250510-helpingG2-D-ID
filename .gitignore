@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# IDE / Editor specific
+.idea/
+.vscode/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Sensitive files - 確保你不會意外提交包含敏感信息的文件
+# 如果你創建了 .env 文件來存放環境變量 (本地開發用)，請取消下面一行的註釋
+# .env

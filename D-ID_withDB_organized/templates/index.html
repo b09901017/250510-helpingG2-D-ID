@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-ID 測試1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>和虛擬人物對話</h1>
+        <div id="video-container">
+            <video id="agent-video" autoplay playsinline muted></video>
+            </div>
+        <button id="unmute-button" style="display: none;">取消靜音 / Unmute</button>
+        
+        <div id="chat-history-container" style="margin-top: 20px; border: 1px solid #ccc; padding: 10px; height: 200px; overflow-y: auto; text-align: left;">
+            <h4>聊天記錄</h4>
+            <div id="chat-history">
+                </div>
+        </div>
+
+        <div id="status-messages">
+            <p id="connection-status">狀態：未連接</p>
+            <p id="error-message" style="color: red;"></p>
+        </div>
+        <div id="controls">
+            <button id="connect-button">連接 Agent</button>
+            <button id="create-chat-button" disabled>創建聊天</button>
+            <button id="end-chat-button" style="display: none;">結束對話並處理紀錄</button>
+        </div>
+        <div id="chat-interface" style="display: none;">
+            <input type="text" id="message-input" placeholder="輸入你的訊息...">
+            <button id="send-button">發送</button>
+        </div>
+    </div>
+
+    <script src="/static/js/ui_handlers.js"></script>
+    <script src="/static/js/api_handlers.js"></script>
+    <script src="/static/js/webrtc_handlers.js"></script>
+    <script src="/static/js/chat_handlers.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

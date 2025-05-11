@@ -10,9 +10,9 @@ import json # << 新增
 # --- MongoDB 初始化 ---
 from pymongo import MongoClient
 # 從環境變數讀取，但如果未設定，則使用你 upload.js 中的預設值 (除了密碼)
-MONGO_URI = "mongodb+srv://daniel960020:Daniel0211@oldpetgamedb.1si9zmc.mongodb.net/?retryWrites=true&w=majority&appName=OldPetGameDB"
-MONGO_DATABASE_NAME = "helpingG2"
-MONGO_COLLECTION_NAME ="upload_first_try"
+MONGO_URI = ""
+MONGO_DATABASE_NAME = ""
+MONGO_COLLECTION_NAME =""
 
 try:
     client = MongoClient(MONGO_URI)
@@ -30,9 +30,9 @@ except Exception as e:
 app = Flask(__name__)
 
 # 從環境變數讀取 API Key 和 Agent ID !!! 就修改這裡就好~~
-DID_API_KEY = "Basic cWluZ2Z1bWFpbmFvQGdtYWlsLmNvbQ:ictjs-IWq61RcPABpK-tY" 
-AGENT_ID = "agt_xcI1Cwqn"
-AGENT_SOURCE_URL = "https://create-images-results.d-id.com/google-oauth2|110694817992140356574/upl_vx3RG0IVzRCgvrKcALxRa/image.png"
+DID_API_KEY = "" 
+AGENT_ID = ""
+AGENT_SOURCE_URL = ""
 
 # 用於儲存每個 Flask session 的 chat_id
 

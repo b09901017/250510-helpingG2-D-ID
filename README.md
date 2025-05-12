@@ -30,6 +30,7 @@ D-ID_withDB_organized/
 │       └── webrtc_handlers.js # 前端 WebRTC 處理邏輯
 └── templates/
     └── index.html             # 前端主頁面 HTML
+```
 
 ## 設定與執行
 

@@ -35,8 +35,9 @@ D-ID_withDB_organized/
 ## 設定與執行
 
 1.  **安裝依賴套件**:
-    在你的終端機中，進入 `D-ID_withDB_organized` 資料夾，然後執行：
+    在你的終端機中，進入 `D-ID_withDB_organized` 資料夾，然後安裝套件：
     ```bash
+    cd D-ID_withDB_organized
     pip install -r requirements.txt
     ```
 

@@ -23,9 +23,9 @@ from mongo_handlers import handle_save_chat_history
 # --- MongoDB 初始化 ---
 from pymongo import MongoClient 
 
-MONGO_URI = "mongodb+srv://daniel960020:Daniel0211@oldpetgamedb.1si9zmc.mongodb.net/?retryWrites=true&w=majority&appName=OldPetGameDB"
-MONGO_DATABASE_NAME = "helpingG2"
-MONGO_COLLECTION_NAME ="upload_first_try"
+MONGO_URI = ""
+MONGO_DATABASE_NAME = ""
+MONGO_COLLECTION_NAME =""
 
 # 試著連線看看
 client = None # 先宣告一下 等等會把 MongoClient 的實例放進來
@@ -51,9 +51,9 @@ app = Flask(__name__) # 創建 Flask
 
 # --- 全域設定值 ---
 # 這些是跟 D-ID API 互動時會用到的重要資訊
-DID_API_KEY = "Basic cWluZ2Z1bWFpbmFvQGdtYWlsLmNvbQ:ictjs-IWq61RcPABpK-tY" 
-AGENT_ID = "agt_HQM5P6GR"
-AGENT_SOURCE_URL = "https://create-images-results.d-id.com/google-oauth2|110694817992140356574/upl_BOv0vuMrD5SSMyRiwM4o6/image.png"
+DID_API_KEY = "" 
+AGENT_ID = ""
+AGENT_SOURCE_URL = ""
 
 # Flask session 需要一個 secret_key 來加密 session 資料 隨便打一串複雜的就好
 app.secret_key = '123' # 真的隨便打，但記得要改掉

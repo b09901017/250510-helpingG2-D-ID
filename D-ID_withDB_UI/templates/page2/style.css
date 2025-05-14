@@ -1,0 +1,252 @@
+/* page2/page2.style.css */
+
+/* 基本重設和 box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px; /* 設定基準字型大小 */
+}
+
+body {
+  font-family: var(---font-family, "NotoSansTc-Regular", sans-serif); /* 確保 var 名稱與 vars.css 一致 */
+  line-height: 1.6;
+  background-color: var(--page-bg-color, #E9E4D4); /* 頁面背景色，建議在 vars.css 定義 --page-bg-color */
+  color: var(--text-primary-color, #333333); /* 預設文字顏色 */
+}
+
+/* 外層容器，用於 Flexbox 置中畫布 */
+.page-outer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px; /* 給畫布周圍一些空間，避免貼邊 */
+}
+
+/* 內容畫布：固定寬高（或最大寬高）以保持比例感 */
+.page-content-canvas {
+  width: 100%;
+  max-width: 1440px; /* 設計稿的目標寬度，請根據您的 Figma 調整 */
+  height: 100%;     /* 高度由內容或 max-height 決定 */
+  max-height: 1024px; /* 設計稿的目標高度，請根據您的 Figma 調整 */
+  background-color: var(--canvas-bg-color, #f5f3ef); /* 畫布背景色，建議在 vars.css 定義 */
+  position: relative; /* 所有內部絕對定位的參考點 */
+  overflow: hidden; /* 避免內部元素溢出畫布 */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* 可選：給畫布一個陰影 */
+  aspect-ratio: 1440 / 1024; /* 可選：如果希望嚴格按固定比例縮放 */
+  display: flex; /* 使得 .div 可以更容易地在內部定位或居中 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 固定在畫布頂部的頁首 */
+.page-header-fixed {
+    position: absolute;
+    top: 28px; /* 根據您的 Figma 檔案 chevron-left top: 28px */
+    left: 0;
+    right: 0;
+    width: auto; /* 寬度自動，由 padding 和內部元素決定 */
+    padding: 0 72px; /* 頁首左右的內邊距 (chevron-left left: 72px) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10; /* 確保在其他元素之上 */
+}
+
+.nav-icon {
+  width: 48px; /* 圖示大小 */
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out; /* 平滑的變換效果 */
+}
+.nav-icon:hover {
+  transform: scale(1.1); /* 滑鼠懸浮時放大 */
+}
+
+.welcome-message-p2 {
+    font-size: 1.25rem; /* 20px */
+    color: var(--text-primary-color, #333333);
+    text-align: center;
+    flex-grow: 1; /* 讓歡迎詞佔據中間的可用空間 */
+    margin: 0 10px; /* 與兩邊圖示的間距 */
+}
+
+/* .div 是您原有的主要內容塊，現在位於 .page-content-canvas 內部 */
+.div {
+  width: 100%;
+  height: 100%;
+  position: relative; /* 內部絕對定位元素的參考點 */
+  overflow: hidden; /* 如果內容超出，則隱藏 */
+}
+
+/* 角色容器公共樣式 */
+.character-container {
+  position: absolute; /* 相對於 .div 定位 */
+  cursor: pointer;
+  /* transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out; */
+  transition-property: transform, box-shadow; /* 只對這些屬性應用過渡 */
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 625px; /* 根據您截圖中角色區域的寬度估算 */
+  /* height is auto, determined by content */
+  /* 定位由下方的 .character-girl 和 .character-boy 具體設定 */
+}
+
+.character-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* 稍微柔和的陰影 */
+}
+
+.character-container:hover .character-border {
+  border-color: var(--accent-color, #A692C3); /* 懸浮時邊框變色，建議在 vars.css 定義 --accent-color */
+  /* 如果不想要邊框發光效果，可以移除下面的 box-shadow */
+  /* box-shadow: 0 0 15px var(--accent-color-glow, rgba(166, 146, 195, 0.5)); */
+}
+
+.character-image {
+  width: 100%; /* 圖片寬度充滿其容器（此處為 615px 的父層，但受限於容器寬度） */
+  max-width: 615px;  /* 根據您原 .boy-1/.boy-3 的 width */
+  height: auto; /* 高度自適應以保持比例 */
+  /* height: 615px; */ /* 如果希望固定高度 */
+  object-fit: cover; /* 保持圖片比例並填充 */
+  aspect-ratio: 1 / 1; /* 確保圖片是正方形的 */
+  display: block; /* 移除圖片底部多餘空間 */
+  margin-bottom: 20px; /* 圖片和文字之間的距離 */
+  border-radius: 8px; /* 給圖片本身加一點圓角 */
+}
+
+.character-border {
+  border-style: solid;
+  border-color: var(--border-inactive-color, #cee7d9); /* 預設邊框顏色，建議在 vars.css 定義 */
+  border-width: 3px; /* 邊框寬度 */
+  position: absolute;
+  width: calc(100% + 8px); /* 比圖片容器稍寬，視覺上包裹圖片 */
+  height: calc(100% - 80px + 8px); /* 估算包裹圖片的高度，並預留文字空間，80px為估計文字區高度 */
+                                /* 您需要精確調整這個值 */
+  top: -4px; /* 向上偏移以使邊框包裹圖片 */
+  left: -4px; /* 向左偏移以使邊框包裹圖片 */
+  z-index: -1; /* 放在圖片後面 */
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+  border-radius: 12px; /* 邊框圓角，應大於或等於圖片圓角 */
+}
+
+.character-name {
+  color: var(--text-primary-color, #333333);
+  text-align: center;
+  font-family: "Inter-ExtraBold", sans-serif; /* 確保此字體已載入 */
+  font-size: 64px; /* 文字大小，請根據您的設計調整 */
+  font-weight: 800;
+  margin-top: 10px; /* 與圖片的間距，如果圖片 margin-bottom 已設定，此處可為0或調整 */
+  width: 100%;
+  position: relative; /* 確保在正常文檔流中 */
+  z-index: 1; /* 確保文字在邊框之上 */
+}
+
+/* 女孩角色 (左) 定位 */
+.character-girl {
+  /* 估算位置：假設畫布寬1440px，角色容器寬625px，左右兩個角色，中間留一些間距 */
+  /* (1440 - (625 * 2)) / 3 = (1440 - 1250) / 3 = 190 / 3 approx 63px (間距) */
+  left: 63px;
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+}
+
+/* 男孩角色 (右) 定位 */
+.character-boy {
+  /* left = 第一個間距 + 女孩容器寬度 + 第二個間距 */
+  left: calc(63px + 625px + 63px);
+  top: 50%;
+  transform: translateY(-50%); /* 垂直居中 */
+}
+
+/* 移除或調整原有的特定角色樣式，因為它們已整合到 .character-container */
+.boy-1, .rectangle-7, .div2, .boy-3, .rectangle-9, .div3 {
+    position: static; /* 移除絕對定位，由新的父層 .character-container 控制 */
+    width: auto;
+    height: auto;
+    left: auto;
+    top: auto;
+    transform: none;
+    font-size: inherit; /* 字體大小由 .character-name 控制 */
+    /* 其他可能衝突的樣式也應重設或移除 */
+}
+
+
+/* 如果您在 HTML 中保留了原有的 .icon-button 和 .icon-button2 (非頁首中的) */
+/* 您需要為它們提供新的定位或決定是否移除它們 */
+.icon-button {
+  /* display: none; */ /* 如果不用，可以隱藏 */
+  position: absolute;
+  left: 1250px; /* 示例位置 */
+  top: 80px;  /* 示例位置 */
+  /* 複製您原有的 .icon-button 樣式，但調整定位 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+}
+
+.icon-button2 {
+  /* display: none; */ /* 如果不用，可以隱藏 */
+  position: absolute;
+  left: 1320px; /* 示例位置 */
+  top: 80px;   /* 示例位置 */
+  /* 複製您原有的 .icon-button2 樣式，但調整定位 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
+
+/* .container, .state-layer, .icon, .icon2 是 icon-button 內部的樣式 */
+/* 如果保留了 icon-button，確保這些樣式是正確的 */
+.container {
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.state-layer {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.icon, .icon2 { /* 用於 icon-button 內的圖示 */
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+

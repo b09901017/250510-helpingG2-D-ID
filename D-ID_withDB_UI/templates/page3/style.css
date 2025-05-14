@@ -1,0 +1,289 @@
+/* page3/page3.style.css */
+
+/* 基本重設和 box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-noto-sans-tc-regular, "Noto Sans TC", sans-serif);
+  line-height: 1.6;
+  background-color: var(--page-bg-color, #E9E4D4);
+  color: var(--text-primary-color, #333333);
+  overflow: hidden; /* 防止整個頁面滾動 */
+}
+
+.page-outer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh; /* 改為 height 以確保即使內容少也全屏 */
+  padding: 10px;
+}
+
+.page-content-canvas {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  max-height: 1024px;
+  background-color: var(--canvas-bg-color, #f5f3ef);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  aspect-ratio: 1440 / 1024;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header-fixed {
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--canvas-bg-color, #f5f3ef);
+  border-bottom: 1px solid var(--border-light-color, #e0e0e0);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.nav-icon {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+.page-title-p3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary-color, #333333);
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* 主要內容區域 - 恢復初始上下佈局 */
+.main-content-p3.initial-layout {
+  flex-grow: 1; /* 佔據頁首下方的剩餘空間 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平居中其子元素 */
+  justify-content: space-between; /* Video 在上，文字區在下，中間空間分配 */
+  padding: 30px 40px 20px; /* 上 左右 下 內邊距 */
+  overflow: hidden; /* 防止內部溢出 */
+}
+
+/* 影片播放區域 */
+.video-container-p3 {
+  width: 100%;
+  /* 影片大小參考 image_309c68.png 中的人物視覺大小 */
+  /* Page 1 的 _1000022091-1 是 213x213 或 325x325 */
+  /* image_309c68.png 的人物圖佔據了畫面上半部約 40-50% 的高度 */
+  /* 我們可以設定一個相對於畫布高度的比例，或者一個固定的 max-width 和 aspect-ratio */
+  max-width: 480px;  /* 您可以調整這個值以匹配期望的 "照片大小" */
+                     /* 例如，如果 Page 1 的照片是 213px 寬，這裡可以設為 213px 或稍大 */
+  /* height: auto; */ /* 高度由 aspect-ratio 控制 */
+  aspect-ratio: 1 / 1; /* 假設影片區域像照片一樣是正方形，或根據影片內容調整 (e.g., 4/3) */
+  background-color: #1c1c1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  /* margin-bottom: auto; */ /* 將影片推向上方，如果 justify-content 是 space-between */
+  flex-shrink: 0; /* 防止影片在空間不足時被過度壓縮 */
+}
+
+#characterVideoP3 {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* 下方文字顯示區域 - 維持原有比例和樣式 */
+.text-display-area-p3.fixed-ratio-bottom {
+  width: 100%;
+  max-width: 1200px; /* 參考 image_309c68.png 中下方區域的寬度 */
+  /* 高度設定：參考 image_309c68.png，下方區域約佔整體高度的 1/3 */
+  /* 例如，如果畫布是 1024px 高，這裡可以是 300-350px */
+  /* 或者根據內容設定 min-height */
+  height: 300px; /* 固定高度以維持比例感，請根據您的設計稿調整 */
+  min-height: 250px; /* 最小高度 */
+  padding: 25px 30px;
+  background-color: var(--text-display-bg, #D6E4E5);
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  /* margin-top: auto; */ /* 已被父容器的 justify-content: space-between 控制 */
+  flex-shrink: 0; /* 防止在空間不足時被壓縮 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.mic-button-area-p3 {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.ellipse-mic-p3 {
+  background: var(--mic-ellipse-bg, #b6c7a6);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+.mic-button-area-p3:hover .ellipse-mic-p3 {
+    background-color: var(--mic-ellipse-hover-bg, #a1b88f);
+}
+.mic-icon-p3 {
+  width: 45%;
+  height: 45%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.generated-text-p3 {
+  flex-grow: 1;
+  font-size: 1.2rem; /* 根據截圖感覺文字可以稍大 */
+  color: var(--text-generated-color, #2c3e50);
+  line-height: 1.7;
+  max-height: calc(100% - 40px); /* 限制最大高度以在容器內滾動 */
+  overflow-y: auto;
+  padding: 10px; /* 給文字一些內邊距 */
+  text-align: left; /* 預設文字靠左 */
+}
+
+/* 懸浮框 (Modal) 樣式 */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
+  display: flex; /* 預設顯示，用 JS 控制 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 確保在最上層 */
+  opacity: 0; /* 初始隱藏 */
+  visibility: hidden; /* 初始隱藏 */
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.modal-content {
+  background-color: var(--canvas-bg-color, #f5f3ef); /* 使用畫布背景色或白色 */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px; /* 懸浮框最大寬度 */
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* 狀態和按鈕之間的間距 */
+  text-align: center;
+}
+
+.status-display-modal {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem; /* 16px */
+  color: var(--text-secondary-color, #4A4A4A);
+  background-color: var(--status-bg-light, #f0f2f5);
+  border: 1px solid var(--border-light-color, #d9dde3);
+  border-radius: 8px;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
+}
+
+.action-buttons-modal {
+  display: flex;
+  flex-direction: column; /* 按鈕垂直堆疊 */
+  gap: 15px; /* 按鈕之間的間距 */
+  width: 100%;
+}
+
+.action-btn-modal {
+  padding: 14px 20px;
+  font-size: 1.05rem; /* 17px */
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--primary-blue, #007bff);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.action-btn-modal:hover {
+  background-color: var(--primary-blue-darker, #0056b3);
+}
+.action-btn-modal:disabled {
+  background-color: var(--button-disabled-bg, #cccccc);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.action-btn-modal:nth-child(2) { /* 第二個按鈕 "創建聊天" */
+  /* background-color: var(--secondary-gray, #6c757d); */ /* 如果希望初始就有不同顏色 */
+}
+.action-btn-modal:nth-child(2):not(:disabled):hover {
+  background-color: var(--secondary-gray-darker, #545b62);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .page-content-canvas {
+    aspect-ratio: auto;
+    max-height: none;
+  }
+  .main-content-p3.initial-layout {
+    padding: 20px;
+    justify-content: space-around; /* 在小螢幕上更好地分配空間 */
+  }
+  .video-container-p3 {
+    max-width: 80%; /* 影片在小螢幕可以寬一些 */
+    margin-bottom: 20px; /* 與下方間距 */
+  }
+  .text-display-area-p3.fixed-ratio-bottom {
+    height: auto; /* 高度自適應 */
+    min-height: 180px; /* 保留最小高度 */
+    padding: 20px;
+    border-radius: 20px;
+    flex-direction: column; /* 麥克風和文字堆疊 */
+    text-align: center;
+  }
+  .mic-button-area-p3 { width: 70px; height: 70px; margin-bottom: 10px;}
+  .generated-text-p3 { font-size: 1.1rem; max-height: 120px; text-align: center;}
+
+  .modal-content {
+    padding: 20px;
+    gap: 20px;
+    max-width: 90%;
+  }
+  .status-display-modal { font-size: 0.9rem; padding: 10px; }
+  .action-btn-modal { font-size: 1rem; padding: 12px; }
+}

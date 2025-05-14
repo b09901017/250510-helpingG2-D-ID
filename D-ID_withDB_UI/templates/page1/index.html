@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page 1 - 輸入姓名</title>
-    <link rel="stylesheet" href="./vars.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page1_vars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page1_style.css') }}">
 </head>
 <body>
     <div class="page-outer-wrapper">
         <div class="page-content-canvas">
             <header class="page-header-fixed">
-                <img class="home-icon" id="homeButton" src="home0.svg" alt="Home" title="返回首頁">
+                <img class="home-icon" id="homeButton" src="{{ url_for('static', filename='images/page1/home0.svg') }}" alt="Home" title="返回首頁">
                 <div class="icon-button header-icon-button" id="settingsButton" title="設定">
                      <div class="container">
                         <div class="state-layer">
-                            <img class="icon" src="icon0.svg" alt="Settings icon">
+                            <img class="icon" src="{{ url_for('static', filename='images/page1/icon0.svg') }}" alt="Settings icon">
                         </div>
                     </div>
                 </div>
             </header>
 
             <div class="div">
-                <img class="_1000022091-1" src="_1000022091-10.png" alt="主圖像">
+                <img class="_1000022091-1" src="{{ url_for('static', filename='images/page1/_1000022091-10.png') }}" alt="主圖像">
 
                 <div class="tooltip">
                     <div class="title">歡迎使用</div>
@@ -34,7 +34,7 @@
                         <div class="leading-icon">
                             <div class="container">
                                 <div class="state-layer">
-                                    <img class="icon2" src="icon1.svg" alt="Search icon">
+                                    <img class="icon2" src="{{ url_for('static', filename='images/page1/icon1.svg') }}" alt="Search icon">
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <button type="button" id="nextPageButton" class="action-button _1st-trailing-icon" title="下一步">
                                 <div class="container">
                                     <div class="state-layer">
-                                        <img class="icon3" src="icon2.svg" alt="Next page icon">
+                                        <img class="icon3" src="{{ url_for('static', filename='images/page1/icon2.svg') }}" alt="Next page icon">
                                     </div>
                                 </div>
                             </button>
@@ -55,6 +55,6 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="{{ url_for('static', filename='js/page1_script.js') }}"></script>
 </body>
 </html>

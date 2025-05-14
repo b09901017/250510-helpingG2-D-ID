@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectGirlButton.addEventListener('click', function() {
             console.log("選擇了：女孩 (girl)");
             localStorage.setItem('selectedCharacter', 'girl');
-            window.location.href = '../page3/page3.html';
+            window.location.href = '/page3';
         });
     }
 
@@ -27,21 +27,21 @@ document.addEventListener('DOMContentLoaded', function() {
         selectBoyButton.addEventListener('click', function() {
             console.log("選擇了：男孩 (boy)");
             localStorage.setItem('selectedCharacter', 'boy');
-            window.location.href = '../page3/page3.html';
+            window.location.href = '/page3';
         });
     }
 
     // 返回 Page 1 按鈕
     if (backButton) {
         backButton.addEventListener('click', function() {
-            window.location.href = '../page1/index.html';
+            window.location.href = '/page1';
         });
     }
 
     // Home 按鈕返回 Page 1
     if (homeButton) {
         homeButton.addEventListener('click', function() {
-            window.location.href = '../page1/index.html';
+            window.location.href = '/page1';
         });
     }
 });

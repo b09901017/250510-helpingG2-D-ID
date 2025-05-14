@@ -240,14 +240,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backButton) {
         backButton.addEventListener('click', async function() {
             await cleanupBeforeNavigate();
-            window.location.href = '../page1/index.html'; // Adjust path if necessary
+            window.location.href = '/page1'; // Adjust path if necessary
         });
     }
 
     if (homeButton) {
         homeButton.addEventListener('click', async function() {
             await cleanupBeforeNavigate();
-            window.location.href = '../page2/page2.html'; // Adjust path if necessary
+            window.location.href = '/page2'; // Adjust path if necessary
         });
     }
 

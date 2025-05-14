@@ -28,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // 3. 跳轉到下一頁
-        // 假設 page2.html 在 page2 資料夾中，且 page1 和 page2 是同級資料夾
-        window.location.href = '../page2/page2.html';
+        window.location.href = '/page2';
     }
 
     // 點擊“下一步”按鈕
@@ -56,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (homeButton) {
         homeButton.addEventListener('click', function() {
             // 可以直接重新載入，或導向到 index.html
-            window.location.href = './index.html'; // 或者 window.location.reload();
+            window.location.href = '/page1'; // 或者 window.location.reload();
         });
     } else {
         console.error("Button with id 'homeButton' not found.");

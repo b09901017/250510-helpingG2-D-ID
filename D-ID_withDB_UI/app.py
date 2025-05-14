@@ -73,9 +73,23 @@ common_headers_for_did = {
 # 這裡是所有 API 端點 (endpoint) 的家，也就是前端可以呼叫的網址
 
 # --- 基本的首頁路由 ---
+
 @app.route('/')
-def index_page_route():
-    return render_template('page1/index.html') # Flask 會去 templates 資料夾找 index.html 這個檔案
+def home_page():
+    # 首頁預設導向 page1
+    return render_template('page1/index.html')
+
+@app.route('/page1')
+def page1_route():
+    return render_template('page1/index.html')
+
+@app.route('/page2')
+def page2_route():
+    return render_template('page2/page2.html')
+
+@app.route('/page3')
+def page3_route():
+    return render_template('page3/page3.html')
 # --- 基本的首頁路由結束 ---
 
 

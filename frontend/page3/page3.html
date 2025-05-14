@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 3 - 互動體驗</title>
+    <link rel="stylesheet" href="./vars.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="page-outer-wrapper">
+        <div class="page-content-canvas">
+            <header class="page-header-fixed">
+                <img class="nav-icon chevron-left-icon" id="backToPage1ButtonP3" src="chevron-left0.svg" alt="返回首頁" title="返回首頁">
+                <div class="page-title-p3" id="pageTitleP3">互動體驗</div>
+                <img class="nav-icon home-icon-p3" id="homeButtonP3" src="home0.svg" alt="回首頁" title="回首頁">
+            </header>
+
+            <main class="main-content-p3 initial-layout">
+                <div class="video-container-p3">
+                    <video id="characterVideoP3" autoplay loop muted playsinline>
+                        <source src="your-video.mp4" type="video/mp4">
+                        您的瀏覽器不支援 HTML5 video 標籤。
+                    </video>
+                </div>
+
+                <div class="text-display-area-p3 fixed-ratio-bottom">
+                    <div class="mic-button-area-p3" id="micButtonP3">
+                        <div class="ellipse-mic-p3"></div>
+                        <img class="mic-icon-p3" src="mic0.svg" alt="麥克風">
+                    </div>
+                    <div class="generated-text-p3" id="generatedTextP3">
+                        請先完成初始設定...
+                    </div>
+                </div>
+            </main>
+
+            <div class="modal-overlay" id="initialActionModal">
+                <div class="modal-content">
+                    <div class="status-display-modal" id="modalStatusDisplay">
+                        狀態：等待操作...
+                    </div>
+                    <div class="action-buttons-modal">
+                        <button id="modalConnectAgentBtn" class="action-btn-modal">連接 Agent</button>
+                        <button id="modalCreateChatBtn" class="action-btn-modal" disabled>創建聊天</button>
+                    </div>
+                     </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

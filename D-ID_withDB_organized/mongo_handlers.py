@@ -111,7 +111,7 @@ def handle_save_chat_history(user_collection_db, messages_from_frontend, fronten
                 "健康狀況": "失智症", # 預設值
                 "日常注意事項": "防範跌倒", # 預設值
                 "頭像": "https://your-cdn.com/avatar/user001.png", # 你的預設頭像圖檔網址
-                # 根據你的 upload.js 結構，最好把所有可能的分類都先初始化成空物件 {}
+                # 根據 upload.js 結構，最好把所有可能的分類都先初始化成空物件 {}
                 "關於童年生活": {},
                 "關於家庭與親人": {},
                 "關於日常與食物": {},

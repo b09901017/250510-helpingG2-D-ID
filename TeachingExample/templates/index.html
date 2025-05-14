@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask URL 與按鈕互動範例</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 30px; padding: 15px; border: 1px solid #eee; border-radius: 5px; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        input[type="text"] { padding: 8px; margin-right: 5px; }
+        button { padding: 8px 12px; margin-left: 5px; cursor: pointer; }
+        #resultArea { margin-top: 15px; padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; min-height: 60px; white-space: pre-wrap; font-family: monospace; }
+        code { background-color: #eef; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+    <h1>Flask URL 與按鈕互動範例</h1>
+    <p>這個範例展示如何透過直接輸入 URL 或點擊按鈕來與 Flask 後端互動。</p>
+
+    <div class="section">
+        <h2>GET 請求：取得項目資訊 (使用 /item/&lt;item_id&gt;)</h2>
+        <p>你可以直接在瀏覽器網址列輸入 <code>http://localhost:5000/item/item1</code> 或 <code>http://localhost:5000/item/item2</code> 看看效果。</p>
+        <p>或者，在下面輸入 ID (例如：<code>item1</code>, <code>item2</code>, 或隨便打 <code>abc</code>) 並點擊按鈕：</p>
+        <div>
+            <input type="text" id="getItemIdInput" placeholder="輸入 item ID (例如: item1)">
+            <button id="getItemButton">透過按鈕 GET</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>POST 請求：更新項目資訊 (使用 /item/update)</h2>
+        <p>在下面輸入要發送的資料，然後點擊按鈕：</p>
+        <div>
+            <input type="text" id="postDataIdInput" placeholder="項目 ID (例如: item3)">
+            <input type="text" id="postDataNameInput" placeholder="項目名稱 (例如: 橘子)">
+            <button id="postItemButton">透過按鈕 POST</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>後端回應結果：</h2>
+        <div id="resultArea">(結果會顯示在這裡...)</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 取得元素 ---
+            const getItemIdInput = document.getElementById('getItemIdInput');
+            const getItemButton = document.getElementById('getItemButton');
+            const postDataIdInput = document.getElementById('postDataIdInput');
+            const postDataNameInput = document.getElementById('postDataNameInput');
+            const postItemButton = document.getElementById('postItemButton');
+            const resultArea = document.getElementById('resultArea');
+
+            // --- Helper: 顯示結果 ---
+            function displayResult(data) {
+                // 將 JSON 物件轉換成格式化的字串顯示
+                resultArea.textContent = JSON.stringify(data, null, 2); // null, 2 用於美化輸出
+            }
+            function displayLoading(message) {
+                resultArea.textContent = message || '正在請求...';
+            }
+            function displayError(error) {
+                 console.error('請求錯誤:', error);
+                 resultArea.textContent = '發生錯誤：' + error.message;
+            }
+
+            // --- GET 按鈕事件 ---
+            getItemButton.addEventListener('click', function() {
+                const itemId = getItemIdInput.value.trim(); // 取得輸入的 ID 並去除頭尾空白
+                if (!itemId) {
+                    alert('請輸入 Item ID！');
+                    return;
+                }
+                displayLoading(`正在 GET /item/${itemId}...`);
+
+                // 動態組合 URL
+                const url = `/item/${itemId}`;
+
+                fetch(url) // 預設就是 GET
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP 錯誤 ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => displayResult(data)) // 成功時顯示結果
+                    .catch(error => displayError(error)); // 失敗時顯示錯誤
+            });
+
+            // --- POST 按鈕事件 ---
+            postItemButton.addEventListener('click', function() {
+                const itemId = postDataIdInput.value.trim();
+                const itemName = postDataNameInput.value.trim();
+
+                if (!itemId || !itemName) {
+                    alert('請輸入項目 ID 和名稱！');
+                    return;
+                }
+                displayLoading('正在 POST 到 /item/update...');
+
+                // 準備要 POST 的資料
+                const postData = {
+                    id: itemId,
+                    name: itemName,
+                    // 你可以加入更多欄位
+                    timestamp: new Date().toISOString() // 加上目前時間
+                };
+
+                fetch('/item/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(postData) // 將 JavaScript 物件轉成 JSON 字串
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP 錯誤 ${response.status}`);
+                    return response.json();
+                })
+                .then(data => displayResult(data))
+                .catch(error => displayError(error));
+            });
+
+        });
+    </script>
+
+</body>
+</html>

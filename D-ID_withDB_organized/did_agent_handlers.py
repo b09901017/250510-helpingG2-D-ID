@@ -75,7 +75,7 @@ def handle_send_message_to_agent(d_id_api_url, agent_id, common_headers, user_me
         #print(f"錯誤 (did_agent_handlers.py): 傳送訊息時少了 talk_stream_id ('{talk_stream_id}') 或 talk_session_id ('{talk_session_id}')。")
         return jsonify({"error": "哎呀，talk_stream_id 或 talk_session_id 不見了，這很重要耶！"}), 400
 
-    # D-ID 對時間格式有特殊要求，我們要乖乖照做
+    # D-ID 對時間格式有特殊要求，要乖乖照做
     created_at_timestamp = datetime.now(timezone.utc).strftime("%m/%d/%Y, %H:%M:%S")
     #print(f"DEBUG (did_agent_handlers.py): 幫使用者訊息加上時間戳記: {created_at_timestamp}")
 

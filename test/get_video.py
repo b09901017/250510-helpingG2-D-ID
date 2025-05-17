@@ -2,8 +2,8 @@ import requests # pip install requests
 import json
 import time
 
-D_ID_API_KEY = "Basic cWluZ2Z1bWFpbmFvQGdtYWlsLmNvbQ:ictjs-IWq61RcPABpK-tY"
-IMAGE_SOURCE_URL = "https://create-images-results.d-id.com/google-oauth2|110694817992140356574/upl_BOv0vuMrD5SSMyRiwM4o6/image.png"
+D_ID_API_KEY = ""
+IMAGE_SOURCE_URL = ""
 
 # --- 輪詢設定 (沒隔10秒確認DID影片生成進度) ---
 POLLING_INTERVAL_SECONDS = 3 # 每隔多少秒檢查一次狀態

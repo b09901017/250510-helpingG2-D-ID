@@ -2,8 +2,8 @@ import requests # pip install requests
 import json
 import time
 
-D_ID_API_KEY = ""
-IMAGE_SOURCE_URL = ""
+D_ID_API_KEY = "撤掉了"
+IMAGE_SOURCE_URL = "撤掉了"
 
 # --- 輪詢設定 (沒隔10秒確認DID影片生成進度) ---
 POLLING_INTERVAL_SECONDS = 3 # 每隔多少秒檢查一次狀態

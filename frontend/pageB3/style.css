@@ -1,0 +1,251 @@
+/* style.css - 歷史對話紀錄頁面 */
+
+/* 基本重置和 body 樣式，用於置中 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #333; /* 頁面外圍的深色背景 */
+  margin: 0;
+  padding: 20px 0;
+  font-family: var(---font-family); /* 使用 vars.css 中定義的基礎字型 */
+  color: var(--color-text-primary-dark); /* 使用 vars.css 中定義的基礎文字顏色 */
+}
+
+.div,
+.div * {
+  box-sizing: border-box;
+}
+
+/* 主容器 .div 樣式 */
+.div {
+  background: var(--color-bg-content-cards-yellow); /* 正確的淡黃色背景 */
+  width: 1024px; /* 或您希望的寬度，例如 960px */
+  max-width: calc(100% - 40px);
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px; /* 確保底部有足夠空間，避免內容貼近瀏覽器底部 */
+}
+
+/* 頂部圖標的佈局 */
+.icon-button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.icon-button .container {
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-button .state-layer {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.icon-button .icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+
+.home {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 78px; /* 20px (div padding) + 48px (icon-button width) + 10px (spacing) */
+  top: 20px;
+  overflow: visible;
+  z-index: 10;
+}
+
+.chevron-left {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  overflow: visible;
+  z-index: 10;
+}
+
+/* 標題 "歷史對話紀錄" 區域 */
+.component-4 {
+  width: auto;
+  max-width: 100%;
+  position: relative;
+  margin: 0 auto 30px auto;
+  padding-top: 70px; /* 確保在頂部圖標下方 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.component-4 .building-blocks-leading-element {
+  width: 32px;
+  height: 32px;
+  position: static;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.component-4 .icon2 {
+  width: 100%;
+  height: 100%;
+  position: static;
+  overflow: visible;
+}
+
+.component-4 .div2 { /* "歷史對話紀錄" 文字 */
+  color: var(--color-text-primary-dark);
+  text-align: center;
+  font-family: var(---font-family-bold);
+  font-size: var(---font-size-large-title);
+  font-weight: var(---font-weight-bold);
+  position: static;
+}
+
+/* 歷史紀錄卡片列表容器 */
+.component-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* 卡片之間的間距 */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 680px; /* 調整卡片列表的最大寬度 */
+  position: relative;
+  margin: 0 auto; /* 水平居中 */
+}
+
+.card {
+  background: var(--color-bg-content-cards-yellow); /* 確保卡片背景是淡黃色 */
+  border-radius: var(--var-sds-size-radius-400, 12px);
+  border-style: dashed;
+  border-color: var(--var-sds-color-border-default-default, #cccccc);
+  border-width: 1px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-height: 120px; /* 調整最小高度 */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card .body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+}
+
+.card .text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.card .title {
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(---font-family-semibold);
+  font-size: var(---font-size-card-title);
+  line-height: 1.3; /* 調整行高 */
+  font-weight: var(---font-weight-semibold);
+  position: relative;
+  align-self: stretch;
+}
+
+.card .body-text-for-whatever-you-d-like-to-say-add-main-takeaway-points-quotes-anecdotes-or-even-a-very-very-short-story {
+  color: var(--var-sds-color-text-default-secondary, #757575);
+  text-align: left;
+  font-family: var(---font-family);
+  font-size: var(---font-size-body-text);
+  line-height: 1.4; /* 調整行高 */
+  font-weight: var(---font-weight);
+  position: relative;
+  align-self: stretch;
+}
+
+.card .button-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  margin-top: auto; /* 將按鈕推到底部 */
+}
+
+.card .button {
+  background: var(--color-bg-button-action-green); /* 淡青綠色按鈕背景 */
+  border-radius: var(--var-sds-size-radius-200, 6px);
+  border: none;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: var(--var-sds-color-text-neutral-default, #303030); /* 按鈕文字顏色 */
+  text-decoration: none;
+}
+.card .button:hover {
+  opacity: 0.85;
+}
+
+.card .button2 { /* "查看" 文字 */
+  color: inherit; /* 繼承 .button 的顏色 */
+  text-align: center;
+  font-family: var(---font-family);
+  font-size: var(---font-size-button-text);
+  line-height: 1;
+  font-weight: var(---font-weight-button-text);
+  position: relative;
+}

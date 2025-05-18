@@ -1,0 +1,49 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --dashboard-background: #f5f3ef; /* 原有的 --: #f5f3ef; */
+  --color-d6e4e5: #d6e4e5;       /* 原有的 --: #d6e4e5; */
+  --button-group-background-green: #cee7d9; /* 原有的 --: #cee7d9; 用於按鈕背景 */
+  --color-ffddaa: #ffddaa;       /* 原有的 --: #ffddaa; */
+  --text-color-dark: #333333;    /* 原有的 --: #333333; */
+  --color-fbf5ea: #fbf5ea;       /* 原有的 --: #fbf5ea; */
+  --color-b6c7a6: #b6c7a6;       /* 原有的 --: #b6c7a6; */
+  --card-background-purple: #ececfe;    /* 原有的 --: #ececfe; 用於卡片背景 */
+  --color-e2f2cf: #e2f2cf;       /* 原有的 --2: #e2f2cf; */
+  --searchbar-background: #ece6f0; /* 原有的 --: #ece6f0; */
+
+  /* Fonts */
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 24px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Bold, sans-serif;
+  ---font-size: 28px;
+  ---line-height: normal;
+  ---font-weight: 700;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 16px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 20px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 18px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+
+  /* Effects */
+}
+/* Figma Color Variables of your File */
+:root,
+[data-variable-collection-mode="mode-1"] {
+  /* mode-1 */
+  --mode-color-b6c7a6: #b6c7a6; /* 原有的 --: #b6c7a6; */
+}

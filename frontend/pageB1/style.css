@@ -1,0 +1,396 @@
+/* Add styles for body to center the dashboard and allow page scrolling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Changed from center to flex-start for page scrolling */
+  min-height: 100vh;
+  background-color: #e0e0e0;
+  margin: 0;
+  padding: 20px 0; /* Added vertical padding, horizontal centering is by justify-content */
+  box-sizing: border-box;
+}
+
+.dashboard,
+.dashboard * {
+  box-sizing: border-box;
+}
+.dashboard {
+  background: var(--dashboard-background, #f5f3ef);
+  width: 1440px;
+  max-width: calc(100% - 40px); /* Ensure some padding from viewport edges on smaller screens */
+  /* No fixed height - it will grow with content */
+  /* No max-height unless specifically desired for the dashboard element itself */
+  position: relative;
+  /* overflow-y: auto; Removed to allow page scroll instead of dashboard scroll */
+  overflow-x: hidden; /* Prevent horizontal scroll for the main dashboard */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-bottom: 20px; /* Ensures space at the bottom if body padding is only vertical */
+}
+
+.search-bar {
+  background: var(--searchbar-background, #ece6f0);
+  border-radius: 28px;
+  border: 1px solid #d1c4e9;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 720px;
+  max-width: calc(100% - 40px); /* Responsive search bar within dashboard padding */
+  min-width: 320px;
+  position: absolute; /* Stays relative to dashboard top */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+.state-layer {
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.leading-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+.container {
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.state-layer2 {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.supporting-text {
+  color: var(--schemes-on-surface-variant, #49454f);
+  text-align: left;
+  font-family: var(--m3-body-large-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--m3-body-large-font-size, 16px);
+  line-height: var(--m3-body-large-line-height, 24px);
+  letter-spacing: var(--m3-body-large-letter-spacing, 0.5px);
+  font-weight: var(--m3-body-large-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.trailing-elements {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  position: relative;
+}
+._1st-trailing-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+.icon2 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.icon-button { /* Top right user icon */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  position: absolute; /* Stays relative to dashboard top */
+  right: 20px;
+  top: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+.icon3 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.home { /* Top right home icon */
+  width: 48px;
+  height: 48px;
+  position: absolute; /* Stays relative to dashboard top */
+  right: 78px;
+  top: 20px;
+  overflow: visible;
+  z-index: 10;
+}
+
+/* Container for the cards - using Grid for responsiveness */
+.component-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 24px; /* Space between cards */
+  padding: 20px; /* Padding within the card container */
+  margin-top: 100px; /* Adjusted space below the search bar area (search bar top 40px + its height ~60px) */
+  /* No fixed height, content defines height */
+}
+
+/* Generic Card Style */
+.card,
+.card2,
+.card3,
+.card4,
+.card5,
+.card6,
+.card7,
+.card8,
+.card9 {
+  background: var(--card-background-purple, #ececfe);
+  border-radius: 16px;
+  padding: var(--var-sds-size-space-600, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-400, 16px);
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  /* No fixed height, content (image, text, button) determines the card's height */
+}
+
+.image {
+  background: var(
+    --image-placeholder,
+    linear-gradient(to left, #e3e3e3, #e3e3e3)
+  );
+  border: 1px solid #d1c4e9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent image from shrinking if card space is tight */
+  width: 160px;
+  height: 160px; /* Fixed height for image consistency */
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+}
+.body { /* Text and button container within card */
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-400, 16px);
+  align-items: stretch;
+  justify-content: space-between; /* Pushes button to bottom if text is short */
+  width: 100%;
+  flex-grow: 1; /* Allows this section to grow and fill available card space */
+  position: relative;
+  overflow: hidden; /* Not typically needed here if content fits */
+}
+.text { /* Container for title and emotion hint */
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.title {
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: center;
+  font-family: var(--heading-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--heading-font-size, 24px);
+  line-height: var(--heading-line-height, 120%);
+  letter-spacing: var(--heading-letter-spacing, -0.02em);
+  font-weight: var(--heading-font-weight, 600);
+  position: relative;
+  align-self: stretch;
+}
+.body-text-for-whatever-you-d-like-to-say-add-main-takeaway-points-quotes-anecdotes-or-even-a-very-very-short-story,
+.body-text-for-whatever-you-d-like-to-say-add-main-takeaway-points-quotes-anecdotes-or-even-a-very-very-short-story2 {
+  color: var(--var-sds-color-text-default-secondary, #757575);
+  text-align: left;
+  font-family: var(--body-base-font-family, "Inter-Regular", sans-serif);
+  font-size: var(--body-base-font-size, 16px);
+  line-height: var(--body-base-line-height, 140%);
+  font-weight: var(--body-base-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  min-height: 2.8em; /* Ensures space for at least two lines of text, preventing jumpiness if text varies */
+}
+
+.body-text-for-whatever-you-d-like-to-say-add-main-takeaway-points-quotes-anecdotes-or-even-a-very-very-short-story-2-span {
+  color: var(--var-sds-color-text-default-secondary, #757575);
+}
+.body-text-for-whatever-you-d-like-to-say-add-main-takeaway-points-quotes-anecdotes-or-even-a-very-very-short-story-2-span2 {
+  color: var(--var-sds-color-text-danger-tertiary, #ec221f);
+}
+
+.button-group {
+  background: var(--button-group-background-green, #cee7d9);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch; /* Stretches to fill width */
+  margin-top: auto; /* Pushes button group to the bottom of the .body container if .body uses flex-grow and space-between */
+  flex-shrink: 0; /* Prevent shrinking */
+  position: relative;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.15);
+  padding: 4px;
+}
+.button {
+  border-radius: var(--var-sds-size-radius-200, 6px);
+  padding: var(--var-sds-size-space-300, 10px) var(--var-sds-size-space-400, 16px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  cursor: pointer;
+}
+.button2 { /* Text "查看" */
+  color: var(--var-sds-color-text-neutral-default, #303030);
+  text-align: center;
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--single-line-body-base-font-size, 16px);
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 400);
+  position: relative;
+  width: 100%;
+}
+
+/* Styles for the add button area (FAB) */
+.icon-button2 {
+  background-color: var(--button-group-background-green, #cee7d9);
+  border-radius: var(--var-sds-size-radius-full, 9999px);
+  padding: var(--var-sds-size-space-400, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  position: fixed; /* Fixed positioning for FAB */
+  right: 40px;
+  bottom: 40px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  cursor: pointer;
+  overflow: hidden;
+}
+.user-plus, .plus-circle {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+
+.card9 {
+  /* If .card9 is just another card, it will inherit .card styles.
+     If it's an "add new" placeholder card in the grid: */
+  background: var(--card-background-purple, #d1c4e9);
+  border: 2px dashed var(--card-background-purple, #d1c4e9);
+  display: flex; /*To center content if it has an icon */
+  justify-content: center;
+  align-items: center;
+  min-height: 250px; /* Example fixed min-height for add card */
+  cursor: pointer;
+}
+.card.add-new-card {
+  /* It already inherits background, border-radius, padding, box-shadow from .card */
+  /* We need to ensure its content (the plus icon) is centered */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  cursor: pointer; /* Indicate it's clickable */
+  /* Remove any specific content styles from .card that might conflict, like .body or .text structures if they were there */
+  /* Ensure it takes up the same grid space and has a comparable height */
+  min-height: 300px; /* Or match the typical height of other cards. Adjust as needed. */
+                      /* This helps maintain consistent card height if other cards have varying content. */
+                      /* If other cards' heights are naturally similar, this might not be strictly necessary, */
+                      /* but good for visual consistency in a grid. */
+}
+
+.card.add-new-card .plus-icon {
+  width: 64px;  /* Adjust size of the plus icon as desired */
+  height: 64px; /* Adjust size of the plus icon as desired */
+  /* Potentially add some opacity or filter if you want to style the SVG */
+}
+
+/* Remove styles for the old floating action button if it's no longer used */
+/* Ensure these are not affecting other elements if you keep them for other purposes */
+/*
+.icon-button2 {
+  display: none; // Or remove entirely if not used
+}
+
+.plus-circle { // This was an external img tag, also might not be needed
+ display: none; // Or remove entirely if not used
+}

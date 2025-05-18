@@ -1,0 +1,31 @@
+/* vars.css (建議修改後) */
+:root {
+  /* Colors */
+  --color-background-main: #f5f3ef; /* 原 dashboard/div 背景 */
+  --color-panel-background: #d6e4e5; /* 老先生詳細資料區塊背景 (淡藍灰) */
+  --color-button-background-green: #cee7d9; /* 按鈕背景 (淡青綠) */
+  --color-text-dark: #333333; /* 主要文字顏色 */
+  --color-card-background-light-yellow: #fbf5ea; /* 卡片背景和小區塊背景 (淡黃) */
+  --color-icon-background-green: #b6c7a6; /* 圖標按鈕背景 (橄欖綠) */
+  --color-accent-purple: #ececfe; /* 之前用過的紫色，備用 */
+  --color-accent-light-green: #e2f2cf; /* 之前用過的淡綠色，備用 */
+  --color-searchbar-background: #ece6f0; /* 搜尋框背景 */
+  --color-fallback-yellow: #ffddaa; /* 一個備用黃色 */
+
+
+  /* Fonts (保持不變) */
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 24px;
+  /* ... 其他字體變數 ... */
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 18px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+}
+
+/* Figma Color Variables of your File (保持不變，或整合到上面) */
+[data-variable-collection-mode="mode-1"] {
+  /* mode-1 */
+  --color-icon-background-green-mode1: #b6c7a6; /* 與上面的 --color-icon-background-green 相同 */
+}

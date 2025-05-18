@@ -1,0 +1,525 @@
+/* style.css (修改後) */
+
+/* 基本重置和 body 樣式，用於置中 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 讓內容超長時從頂部開始並滾動 */
+  min-height: 100vh;
+  background-color: #333; /* 頁面主背景色 (深色，以便看清 .div 的淡黃色背景) */
+  margin: 0;
+  padding: 20px 0; /* 垂直方向的 padding */
+}
+
+.div,
+.div * {
+  box-sizing: border-box;
+}
+
+/* 主容器樣式 */
+.div {
+  /* 使用 vars.css 中第6個顏色作為淡黃色背景 */
+  background: var(--color-card-background-light-yellow, #fbf5ea); /* 或者直接寫 #fbf5ea */
+  width: 1440px; /* 設計稿寬度，保持比例 */
+  max-width: calc(100% - 40px); /* 響應式寬度 */
+  /* height: 1024px; /* 移除固定高度，讓內容決定高度以允許滾動 */
+  position: relative;
+  /* overflow-y: auto; /* 移除，讓 body 滾動 */
+  overflow-x: hidden; /* 防止水平滾動 */
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px; /* 可選，美化邊角 */
+  padding: 20px; /* 在 .div 內部增加一些 padding */
+  margin-bottom: 20px; /* 底部外邊距 */
+}
+
+.frame-2 {
+  display: flex;
+  flex-direction: row; /* 這會讓 panel-image-content 和 card 並排，可能需要改成 column */
+                       /* 或者保持 row 但讓 card 在 panel-image-content 下方換行 */
+  gap: 30px; /* 調整間距 */
+  /* row-gap: 71px; */ /* flex-direction: row 時 row-gap 可能不直接作用於主軸子元素 */
+  align-items: center; /* 可能需要改成 flex-start 如果元素高度不一 */
+  justify-content: center;
+  flex-wrap: wrap; /* 允許換行 */
+  /* align-content: center; */ /* 當有多行時的對齊方式 */
+  width: 100%; /* 佔滿 .div 的寬度 (減去 .div 的 padding) */
+  /* position: absolute; left: 120px; top: 64px; */ /* 改為相對佈局 */
+  overflow: visible; /* 確保內容可見 */
+}
+
+.panel-image-content {
+  /* 使用 vars.css 中第2個顏色 (淡藍灰) */
+  background: var(--color-panel-background, #d6e4e5);
+  border-radius: 16px;
+  /* opacity: 0.8; */ /* 移除或調整 opacity，讓顏色更實 */
+  padding: var(--var-sds-size-space-1600, 40px); /* 稍微減少 padding */
+  display: flex;
+  flex-direction: row; /* 圖片和文字並排 */
+  gap: var(--var-sds-size-space-1200, 30px); /* 調整間距 */
+  align-items: center;
+  justify-content: flex-start;
+  /* flex-shrink: 0; */ /* 允許在 flex 佈局中收縮 */
+  width: 100%; /* 佔滿父容器寬度 */
+  /* height: 407px; */ /* 讓內容決定高度 */
+  min-height: 300px; /* 設定最小高度 */
+  position: relative;
+  overflow: hidden;
+  /* aspect-ratio: 1200/407; */ /* 如果希望保持比例可以啟用，但可能與內容自適應高度衝突 */
+  margin-bottom: 30px; /* 與下方卡片的間距 */
+}
+
+.image { /* 老先生圖片 */
+  background: var(
+    --image-placeholder,
+    linear-gradient(to left, #e3e3e3, #e3e3e3)
+  );
+  border: 1px solid #ccc; /* 給圖片一個淺色邊框 */
+  border-radius: 8px; /* 圖片圓角 */
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 250px; /* 調整圖片大小 */
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.text-content-flow { /* 老先生文字內容容器 */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start; /* 文字左對齊 */
+  justify-content: center;
+  flex-grow: 1; /* 佔據剩餘空間 */
+  /* width: 484px; */ /* 移除固定寬度 */
+  /* height: 351px; */ /* 移除固定高度 */
+  min-width: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-content-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.heading { /* 老先生 標題 */
+  color: var(--color-text-dark, #333333);
+  text-align: left;
+  font-family: var(--title-page-font-family, "Inter-Bold", sans-serif);
+  font-size: var(--title-page-font-size, 36px); /* 調整字體大小 */
+  line-height: var(--title-page-line-height, 120%);
+  letter-spacing: var(--title-page-letter-spacing, -0.02em);
+  font-weight: var(--title-page-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+
+.subheading { /* 情緒提示 */
+  color: var(--var-sds-color-text-default-secondary, #757575);
+  text-align: left;
+  font-family: var(--heading-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--heading-font-size, 20px); /* 調整字體大小 */
+  line-height: var(--heading-line-height, 120%);
+  letter-spacing: var(--heading-letter-spacing, -0.02em);
+  font-weight: var(--heading-font-weight, 600);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text { /* 基本資料等文字容器 */
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.text2 { /* "基本資料：" 標題 */
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(
+    --m3-headline-small-font-family,
+    "Roboto-Regular",
+    sans-serif
+  );
+  font-size: var(--m3-headline-small-font-size, 20px); /* 調整字體大小 */
+  line-height: var(--m3-headline-small-line-height, 32px);
+  font-weight: var(--m3-headline-small-font-weight, 500); /* 加粗一點 */
+  position: relative;
+  flex: 1;
+}
+
+.text3, .text-3-span, .text-3-span li { /* 年齡、性別等列表 */
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(---font-family, "NotoSansTc-Regular", sans-serif);
+  font-size: var(---font-size, 16px); /* 調整字體大小 */
+  font-weight: var(---font-weight, 400);
+  position: relative;
+  flex: 1;
+  line-height: 1.6; /* 增加行高 */
+}
+.text-3-span {
+  padding-left: 0; /* 移除 ul 預設的 padding */
+  list-style-type: none; /* 確保沒有列表符號 */
+}
+
+
+/* 下方六個小區塊 (card) */
+.card {
+  /* 使用 vars.css 中第6個顏色 (淡黃) */
+  background: var(--color-card-background-light-yellow, #fbf5ea);
+  border-radius: 16px;
+  border-style: dashed;
+  border-color: #aaa; /* 將黑色虛線改為灰色，柔和一點 */
+  border-width: 1px;
+  padding: 20px; /* 統一 padding */
+  display: flex;
+  flex-direction: row; /* 圖標和文字區域並排 */
+  gap: 16px;
+  align-items: center; /* 垂直居中對齊 */
+  justify-content: flex-start; /* 從左開始排列 */
+  /* flex-wrap: wrap; */ /* 通常不需要換行 */
+  /* align-content: center; */
+  flex-shrink: 0;
+  /* width: 363px; */ /* 改用 flex-basis 或 grid 控制寬度 */
+  width: calc(33.333% - 20px); /* 假設一行三個，減去 gap */
+  min-width: 280px; /* 最小寬度 */
+  /* height: 151px; */ /* 讓內容決定高度，或設 min-height */
+  min-height: 120px; /* 設定最小高度 */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 添加細微陰影 */
+}
+
+.tag, .tag2, .tag3, .tag4, .tag5, .tag6 { /* 卡片左側的圖標 */
+  flex-shrink: 0;
+  width: 32px; /* 調整圖標大小 */
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+
+.body { /* 卡片內的文字和按鈕容器 */
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-050, 8px); /* 調整間距 */
+  align-items: flex-start; /* 文字左對齊 */
+  justify-content: space-between; /* 讓標題和按鈕上下分佈 */
+  flex-grow: 1; /* 佔滿剩餘空間 */
+  /* width: 271px; */ /* 移除固定寬度 */
+  /* height: 99px; */ /* 移除固定高度 */
+  /* min-width: 160px; */
+  position: relative;
+  overflow: hidden;
+}
+
+.text4 { /* 卡片文字區 (包含標題和關鍵字) */
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-150, 4px); /* 調整間距 */
+  align-items: flex-start;
+  justify-content: flex-start; /* 改為 flex-start */
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.div2 { /* 卡片標題，例如 "關於童年生活" */
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(--heading-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--heading-font-size, 18px); /* 調整字體大小 */
+  line-height: var(--heading-line-height, 120%);
+  letter-spacing: var(--heading-letter-spacing, -0.02em);
+  font-weight: var(--heading-font-weight, 600);
+  position: relative;
+  align-self: stretch;
+}
+
+.div3 { /* "關鍵字：" */
+  color: var(--var-sds-color-text-default-secondary, #757575);
+  text-align: left;
+  font-family: var(--body-base-font-family, "Inter-Regular", sans-serif);
+  font-size: var(--body-base-font-size, 14px); /* 調整字體大小 */
+  line-height: var(--body-base-line-height, 140%);
+  font-weight: var(--body-base-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+
+.button-group { /* "查看" 按鈕的容器 */
+  display: flex;
+  flex-direction: row;
+  gap: 2px; /* 通常不需要，因為只有一個按鈕 */
+  align-items: center;
+  justify-content: flex-start; /* 按鈕靠左 */
+  align-self: stretch; /* 佔滿寬度，如果按鈕本身不佔滿 */
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto; /* 將按鈕推到底部 */
+}
+
+.button { /* "查看" 按鈕本身 */
+  /* 使用 vars.css 中第3個顏色 (淡青綠) */
+  background: var(--color-button-background-green, #cee7d9);
+  border-radius: var(--var-sds-size-radius-200, 6px); /* 調整圓角 */
+  /* border-style: solid; */ /* 移除或修改邊框 */
+  /* border-color: var(--var-sds-color-border-neutral-default, #303030); */
+  /* border-width: 1px; */
+  border: none; /* 移除邊框，讓背景色更突出 */
+  padding: 8px 16px; /* 調整 padding */
+  display: inline-flex; /* 改為 inline-flex 使其不佔滿整行，除非 .button-group 控制 */
+  flex-direction: row;
+  gap: var(--var-sds-size-space-200, 8px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* 添加手型游標 */
+}
+.button:hover {
+  opacity: 0.9; /* 滑鼠懸停效果 */
+}
+
+.button2 { /* "查看" 文字 */
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: center; /* 文字居中 */
+  font-family: var(
+    --single-line-body-base-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--single-line-body-base-font-size, 14px); /* 調整字體大小 */
+  line-height: var(--single-line-body-base-line-height, 100%);
+  font-weight: var(--single-line-body-base-font-weight, 500); /* 加粗一點 */
+  position: relative;
+}
+
+
+/* 右上角圖標按鈕 */
+.icon-button, .icon-button2, .home, .chevron-left {
+  position: absolute; /* 保持絕對定位，但相對於 .div */
+  z-index: 10; /* 確保在頂層 */
+}
+
+.icon-button { /* 右上角用戶圖標 */
+  right: 20px;
+  top: 20px;
+  /* left: 1392px; top: 16px; (舊的絕對定位) */
+}
+.home { /* Home 圖標 */
+  right: 70px; /* 調整位置 */
+  top: 20px;
+  /* left: 1336px; top: 16px; (舊的絕對定位) */
+}
+.chevron-left { /* 返回圖標 */
+  left: 20px;
+  top: 20px;
+  /* left: 72px; top: 28px; (舊的絕對定位) */
+}
+.icon-button2 { /* 編輯圖標？ (根據截圖右上角的鉛筆圖示) */
+  /* background: var(--color-icon-background-green, #b6c7a6); */ /* 給它一個背景色 */
+  border-radius: 50%; /* 圓形 */
+  padding: 8px; /* 調整 padding */
+  width: 40px; /* 調整大小 */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* left: 1225px; top: 90px; (舊的絕對定位) */
+  right: 120px; /* 根據截圖調整位置，可能在詳細資料區塊的右上角 */
+  top: 30px; /* 相對 .div 的頂部 */
+  cursor: pointer;
+}
+.icon-button2 .container2 { /* 如果有 container2 */
+   background: var(--color-icon-background-green, #b6c7a6); /* 確保背景色 */
+   border-radius: 100px; /* 圓形 */
+}
+.icon-button2 img, .icon-button img, .home img, .chevron-left img {
+  width: 24px; /* 統一圖標大小 */
+  height: 24px;
+}
+
+/* 移除HTML中內聯的 <style> 標籤內的 background: none; (針對 button, input 等)
+   因為我們在 CSS 中已經為 .button 設定了背景。
+   或者確保 CSS 中的選擇器優先級更高。
+   您 CSS 文件中的 .button 應該優先於 HTML 中 <style> 的 button {}
+*/
+
+/* style.css */
+
+/* ... (之前的 body, .div 樣式保持不變) ... */
+
+/* 主容器樣式 - .div */
+.div {
+  background: var(--color-card-background-light-yellow, #fbf5ea);
+  width: 1200px; /* 修改這裡，將整體寬度變窄，例如 1200px 或 1024px */
+  max-width: calc(100% - 40px);
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  /* padding: 20px; */ /* 移除 .div 的整體 padding，改為給 header 和 content 分別設定 */
+  margin-top: 20px; /* 確保與 body 頂部有間距 */
+  margin-bottom: 20px;
+}
+
+/* 新增一個 header 容器來包裹頂部圖標 */
+.page-header {
+  position: relative; /* 或者 sticky 如果希望它固定在頂部 */
+  height: 80px; /* 設定一個固定高度給 header，確保下方內容不會被擠到 */
+  padding: 0 20px; /* 左右 padding */
+  display: flex;
+  align-items: center;
+  /* border-bottom: 1px solid #ddd; */ /* 可選：添加一個分隔線 */
+}
+
+/* 修改頂部圖標的定位，讓它們在 .page-header 內 */
+.chevron-left { /* 返回圖標 */
+  position: static; /* 改為靜態定位，由 flex 控制 */
+  /* left: 20px; top: 20px; (舊的絕對定位) */
+  margin-right: auto; /* 將其推到最左邊 */
+}
+
+.home { /* Home 圖標 */
+  position: static; /* 改為靜態定位 */
+  /* right: 70px; top: 20px; (舊的絕對定位) */
+  margin-left: 16px; /* 與右側圖標的間距 */
+}
+
+.icon-button { /* 右上角用戶圖標 */
+  position: static; /* 改為靜態定位 */
+  /* right: 20px; top: 20px; (舊的絕對定位) */
+  margin-left: 16px; /* 與 home 圖標的間距 */
+}
+
+.icon-button2 { /* 編輯圖標 */
+  position: absolute; /* 這個可以保持絕對定位，但相對於 panel-image-content */
+  right: 20px;
+  top: 20px;
+  background: var(--color-icon-background-green, #b6c7a6);
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5; /* 確保在 panel-image-content 之上 */
+}
+/* 確保圖標本身大小合適 */
+.chevron-left,
+.home,
+.icon-button img, /* 假設 .icon-button 裡面直接是 img */
+.icon-button .icon, /* 或者如果 .icon-button 結構是 .container > .state-layer > .icon */
+.icon-button2 img,
+.icon-button2 .icon2 {
+  width: 28px; /* 稍微調整圖標大小 */
+  height: 28px;
+}
+.icon-button .container, .icon-button .state-layer {
+  padding: 0; /* 移除不必要的 padding */
+}
+
+
+/* 主要內容區域，包括 panel-image-content 和 frame-2 */
+.main-content-area {
+  padding: 0 20px 20px 20px; /* 上方不再需要 padding，因為 header 已經處理了 */
+                                /* 左右和底部 padding */
+}
+
+
+.frame-2 {
+  display: flex;
+  flex-direction: column; /* 改為 column，讓 panel-image-content 和下面的卡片垂直排列 */
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* panel-image-content 和卡片組不換行 */
+  width: 100%;
+  overflow: visible;
+  /* margin-top: 80px; */ /* 移除這個，間距由 .page-header 的高度和 .main-content-area 的 padding 控制 */
+}
+
+.panel-image-content {
+  background: var(--color-panel-background, #d6e4e5);
+  border-radius: 16px;
+  padding: 30px; /* 調整 padding */
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 280px; /* 調整最小高度 */
+  position: relative; /* 為了 .icon-button2 的絕對定位 */
+  /* margin-bottom: 30px; (已由 .frame-2 的 gap 控制) */
+}
+
+/* ... (image, text-content-flow, heading, subheading, text, text2, text3 的樣式可以大致保持上次的調整) ... */
+/* 例如調整字體大小和間距 */
+.heading { font-size: 32px; }
+.subheading { font-size: 18px; }
+.text2 { font-size: 18px; }
+.text3, .text-3-span, .text-3-span li { font-size: 15px; }
+
+
+/* 用於包裹下方六個小卡片的容器 */
+.cards-grid-container {
+  display: grid; /* 使用 Grid 佈局 */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 響應式列 */
+  gap: 20px; /* 卡片之間的間距 */
+  width: 100%;
+}
+
+
+.card {
+  background: var(--color-card-background-light-yellow, #fbf5ea);
+  border-radius: 16px;
+  border-style: dashed;
+  border-color: #aaa;
+  border-width: 1px;
+  padding: 18px; /* 調整 padding */
+  display: flex;
+  flex-direction: row;
+  gap: 12px; /* 圖標和內容的間距 */
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 110px; /* 調整最小高度 */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  /* width: calc(33.333% - 20px); */ /* 移除，由 grid 控制 */
+  /* min-width: 280px; */ /* 移除，由 grid 控制 */
+}
+
+/* ... (tag, body, text4, div2, div3, button-group, button, button2 的樣式可以大致保持上次的調整) ... */
+/* 例如調整字體大小和按鈕 padding */
+.tag, .tag2, .tag3, .tag4, .tag5, .tag6 { width: 28px; height: 28px; }
+.div2 { font-size: 16px; } /* 卡片標題 */
+.div3 { font-size: 13px; } /* 關鍵字 */
+.button { padding: 6px 12px; } /* 查看按鈕 */
+.button2 { font-size: 13px; } /* 查看文字 */

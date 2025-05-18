@@ -1,0 +1,58 @@
+/* vars.css (建議修改後) */
+:root {
+  /* Colors */
+  --color-bg-main-container: #f5f3ef;       /* 原 #f5f3ef (米白) - 用於主要容器如 dashboard 或 .div */
+  --color-bg-panel-blueish: #d6e4e5;       /* 原 #d6e4e5 (淡藍灰) - 用於老先生詳細資料面板 */
+  --color-bg-button-action-green: #cee7d9;  /* 原 #cee7d9 (淡青綠) - 用於「查看」按鈕 */
+  --color-accent-orange-yellow: #ffddaa;     /* 原 #ffddaa (淡橙黃) */
+  --color-text-primary-dark: #333333;       /* 原 #333333 (深灰) - 用於主要文字 */
+  --color-bg-content-cards-yellow: #fbf5ea;  /* 原 #fbf5ea (淡黃) - 用於歷史紀錄卡片、整體內容背景 */
+  --color-bg-icon-olive: #b6c7a6;           /* 原 #b6c7a6 (橄欖綠) - 用於某些圖標背景 */
+  --color-bg-card-lavender: #ececfe;        /* 原 #ececfe (淡紫) - 用於老先生列表頁的卡片 */
+  --color-accent-light-greenish: #e2f2cf;    /* 原 #e2f2cf (更淡的綠) - 之前變數名是 --2 */
+  --color-bg-searchbar-lavender: #ece6f0;   /* 原 #ece6f0 (淡灰紫) - 用於搜尋框 */
+
+  /* SDS (Salesforce Design System) 來自您 style.css 的範例，保留或整合 */
+  --var-sds-size-radius-400: 16px;
+  --var-sds-size-radius-200: 8px; /* 或 6px, 按鈕用 */
+  --var-sds-size-space-600: 24px;
+  --var-sds-size-space-400: 16px;
+  --var-sds-size-space-200: 8px;
+  --var-sds-size-space-300: 12px; /* 按鈕 padding 用 */
+  --var-sds-size-space-050: 2px; /* card body 內的 gap */
+  --var-sds-size-space-150: 6px; /* card text4 內的 gap */
+
+
+  --var-sds-color-border-default-default: #d9d9d9; /* 卡片虛線邊框顏色 */
+  --var-sds-color-text-default-default: #1e1e1e;   /* 卡片內主要文字顏色 */
+  --var-sds-color-text-default-secondary: #757575; /* 卡片內次要文字顏色 */
+  --var-sds-color-text-neutral-default: #303030; /* 按鈕文字顏色 (如果不同於主要文字) */
+  /* --var-sds-color-border-neutral-secondary: #767676; (舊按鈕邊框) */
+
+
+  /* Fonts - 保留您原有的字體定義方式 */
+  ---font-family: "NotoSansTc-Regular", "Inter-Regular", sans-serif; /* 添加 Inter 作為備選 */
+  ---font-size: 24px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+
+  ---font-family-bold: "NotoSansTc-Bold", "Inter-Bold", sans-serif;
+  ---font-size-large-title: 28px; /* 例如 component-4 .div2 */
+  ---font-weight-bold: 700;
+
+  ---font-family-semibold: "Inter-SemiBold", sans-serif;
+  ---font-size-card-title: 18px; /* 例如 .card .title */
+  ---font-weight-semibold: 600;
+
+  ---font-size-body-text: 14px; /* 例如 .card .body-text... */
+  ---font-size-button-text: 14px; /* 例如 .card .button2 */
+  ---font-weight-button-text: 500;
+}
+
+/* 移除 Figma 的匿名 collection mode 變數，因為我們已經在上面定義了 */
+/*
+[data-variable-collection-mode="mode-1"] {
+  --: #b6c7a6;
+}
+*/

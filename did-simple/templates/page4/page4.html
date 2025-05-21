@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>對話結束</title>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5; /* 淡灰色背景 */
+            color: #333;
+            text-align: center;
+        }
+        .container-p4 {
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1877f2; /* 令人愉悅的藍色 */
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .button-p4 {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #1877f2; /* 藍色按鈕 */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .button-p4:hover {
+            background-color: #166fe5; /* 滑鼠懸停時更深的藍色 */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-p4">
+        <h1>對話已結束</h1>
+        <p>感謝您的使用！期待下次與您互動。</p>
+        <a href="{{ url_for('page1_route') }}" class="button-p4">返回首頁</a>
+    </div>
+</body>
+</html>

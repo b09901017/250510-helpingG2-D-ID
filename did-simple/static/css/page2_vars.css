@@ -1,0 +1,48 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --: #f5f3ef;
+  --: #d6e4e5;
+  --: #cee7d9;
+  --: #ffddaa;
+  --: #333333;
+  --: #fbf5ea;
+  --: #b6c7a6;
+  --: #ececfe;
+  --2: #e2f2cf;
+  --: #ece6f0;
+
+  /* Fonts */
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 24px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Bold, sans-serif;
+  ---font-size: 28px;
+  ---line-height: normal;
+  ---font-weight: 700;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 16px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 20px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+  ---font-family: NotoSansTc-Regular, sans-serif;
+  ---font-size: 18px;
+  ---line-height: normal;
+  ---font-weight: 400;
+  ---font-style: normal;
+
+  /* Effects */
+}
+/* Figma Color Variables of your File */
+[data-variable-collection-mode="mode-1"] {
+  /* mode-1 */
+  --: #b6c7a6;
+}

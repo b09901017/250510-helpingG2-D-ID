@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - 選擇角色</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page2_vars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page2_style.css') }}">
+</head>
+<body>
+    <div class="page-outer-wrapper">
+        <div class="page-content-canvas">
+            <header class="page-header-fixed">
+                <img class="nav-icon chevron-left-icon" id="backToPage1Button" src="{{ url_for('static', filename='images/page2/chevron-left.svg') }}" alt="返回上一頁" title="返回上一頁">
+                <div id="welcomeMessageP2" class="welcome-message-p2"></div>
+                <img class="nav-icon home-icon-p2" id="homeButtonP2" src="{{ url_for('static', filename='images/page2/home0.svg') }}" alt="回首頁" title="回首頁">
+            </header>
+
+            <div class="div"> <div id="selectGirl" class="character-container character-girl">
+                    <img class="character-image" src="{{ url_for('static', filename='images/page2/girl-character.png') }}" alt="角色 - 女孩">
+                    <div class="character-name">林品涵</div>
+                    <div class="character-border rectangle-girl"></div>
+                </div>
+
+                <div id="selectBoy" class="character-container character-boy">
+                    <img class="character-image" src="{{ url_for('static', filename='images/page2/boy-character.png') }}" alt="角色 - 男孩">
+                    <div class="character-name">謝承睿</div>
+                    <div class="character-border rectangle-boy"></div>
+                </div>
+
+                </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/page2_script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+/* 基本重設和 box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(---font-family, "NotoSansTc-Regular", sans-serif);
+  line-height: 1.6;
+  background-color: #E9E4D4; /* 頁面背景色，您可以根據您的 vars.css 或喜好調整 */
+  color: var(--text-primary-color, #333333); /* 來自 vars.css 或預設 */
+}
+
+/* 外層容器，用於 Flexbox 置中畫布 */
+.page-outer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh; /* 至少和視窗一樣高 */
+  padding: 20px; /* 給畫布周圍一些空間，避免貼邊 */
+}
+
+/* 內容畫布：固定寬高（或最大寬高）以保持比例感 */
+.page-content-canvas {
+  width: 100%;
+  max-width: 1440px; /* 設計稿的目標寬度，例如 Figma 畫布寬度 */
+  height: 100%;     /* 高度將由內容和下方padding決定，或可設固定值 */
+  max-height: 1024px; /* 設計稿的目標高度 */
+  background-color: var(--canvas-bg-color, #f5f3ef); /* 畫布背景色 */
+  position: relative; /* 所有內部絕對定位的參考點 */
+  overflow: hidden; /* 避免內部元素溢出畫布 */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* 可選：給畫布一個陰影 */
+  aspect-ratio: 1440 / 1024; /* 可選：如果希望嚴格按比例縮放，但可能導致部分空白 */
+                             /* 如果使用 aspect-ratio, max-width 和 max-height 可能需要調整 */
+                             /* 通常 max-width 和固定 height 或 min-height 組合更好控制 */
+  display: flex; /* 使得 .div 可以更容易地在內部定位 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 固定在畫布頂部的頁首 */
+.page-header-fixed {
+    position: absolute;
+    top: 16px; /* 根據您的 Figma 檔案調整 */
+    left: 0; /* 從畫布左邊緣開始 */
+    right: 0; /* 延伸到畫布右邊緣 */
+    width: auto; /* 寬度由左右 padding 和內部元素決定 */
+    padding: 0 72px; /* 頁首左右的內邊距，根據Figma調整 (e.g., chevron-left left: 72px; icon-button right: 72px) */
+    display: flex;
+    justify-content: space-between; /* home 圖示在左，設定圖示在右 */
+    align-items: center;
+    z-index: 10; /* 確保在其他元素之上 */
+}
+
+.home-icon {
+  width: 48px; /* 根據您的 Figma 檔案調整 */
+  height: 48px;
+  cursor: pointer;
+}
+
+.header-icon-button { /* 用於頁首右上角圖示按鈕 */
+  /* 沿用您原 .icon-button 的結構和樣式，但移除絕對定位 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 這個 gap 可能不需要，因為只有一個圖示 */
+  align-items: center;
+  justify-content: center;
+  width: 48px; /* 根據您的 Figma 檔案調整 */
+  height: 48px;
+  cursor: pointer;
+  /* overflow: hidden; */ /* 如果不需要裁剪則移除 */
+}
+.header-icon-button .container {
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.header-icon-button .state-layer {
+  padding: 8px; /* 圖示周圍的點擊區域 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-icon-button .icon {
+  flex-shrink: 0;
+  width: 24px; /* 圖示大小 */
+  height: 24px;
+}
+
+
+/* .div 是您原有的主要內容塊，現在位於 .page-content-canvas 內部 */
+/* 您提供的 style.css 中 .div 的樣式 */
+.div {
+  /* background: var(--, #f5f3ef); */ /* 背景已由 page-content-canvas 提供 */
+  /* height: 1024px; */ /* 高度由 page-content-canvas 控制 */
+  width: 100%; /* 佔滿 page-content-canvas (已被 max-width 限制) */
+  height: 100%;
+  position: relative; /* 確保內部絕對定位元素正確參考 */
+  overflow: hidden; /* 您原有的設定 */
+  /* display: flex; flex-direction: column; align-items: center; justify-content: center; */ /* 如果內部用絕對定位，這個 flex 可能不需要 */
+}
+
+/* 您提供的 style.css 中其他元素的樣式，left/top 值可能需要微調以適應畫布中心 */
+/* 假設您的設計是基於一個 1440x1024 的畫布 */
+/* 如果畫布寬度是 W, 高度是 H */
+/* left_new = (W - element_width) / 2 + (original_left - W_figma / 2) */
+/* 簡化：如果元素本身在Figma中是居中的，那麼 left: 50%; transform: translateX(-50%); top: ...px; */
+
+._1000022091-1 { /* 主圖像 */
+  border-radius: 999px; /* 保持圓形 */
+  width: 213px;  /* 根據您截圖的比例，這個大小可能更合適 (原為 325px 或 213px) */
+  height: 213px;
+  position: absolute;
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%);
+  top: 176px; /* 從畫布頂部的距離，根據截圖估算，原為 176px 或 200px */
+  object-fit: cover;
+}
+
+.tooltip {
+  background: transparent; /* 改為透明背景 */
+  border-radius: var(--var-sds-size-icon-medium, 32px); /* 保持圓角 */
+  border-style: solid;
+  border-color: #59457b; /* 您提供的 style.css 中的邊框顏色 */
+  border-width: 1px;
+  padding: var(--var-sds-size-space-200, 8px) var(--var-sds-size-space-400, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--var-sds-size-space-0, 0px); /* 標題和內文的間距 */
+  align-items: center;
+  justify-content: center;
+  width: 354px; /* 固定寬度 */
+  position: absolute;
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%);
+  top: 443px; /* 從畫布頂部的距離，根據截圖估算，原為 473px 或 443px */
+  overflow: hidden;
+}
+
+.title {
+  color: var(--, #333333);
+  text-align: center;
+  font-family: var(---font-family, "NotoSansTc-Bold", sans-serif);
+  font-size: var(---font-size, 28px); /* 您可以調整為截圖中的大小，例如 20px-24px */
+  font-weight: var(---font-weight, 700);
+  position: relative;
+}
+
+.body-text {
+  color: var(--, #333333);
+  text-align: center;
+  font-family: var(---font-family, "NotoSansTc-Regular", sans-serif);
+  font-size: var(---font-size, 24px); /* 您可以調整為截圖中的大小，例如 16px-18px */
+  font-weight: var(---font-weight, 400);
+  position: relative;
+}
+
+/* search-bar 的樣式，直接沿用您提供的 style.css 中的絕對定位 */
+/* left 和 top 值可能需要微調以確保在畫布中看起來正確居中 */
+.search-bar {
+  background: var(--schemes-surface-container-high, #ece6f0);
+  border-radius: 28px;
+  border-style: solid;
+  border-color: var(--search-bar-border-color, #ABAAAA); /* 截圖中邊框顏色較深，原為 #cee7d9 */
+  border-width: 1px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 720px; /* 固定寬度 */
+  /* min-width: 360px; */ /* 如果希望有最小寬，但固定寬度時不需要 */
+  /* max-width: 720px; */
+  position: absolute;
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%);
+  top: 552px; /* 從畫布頂部的距離，根據截圖估算，原為 585px 或 552px */
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15); /* 調整陰影使其更接近截圖 */
+  overflow: hidden;
+  padding: 4px; /* 給 state-layer2 留出空間，而不是讓 state-layer2 自己有 padding */
+}
+
+.state-layer2 {
+  /* padding: 4px; */ /* padding 移到父層 .search-bar */
+  display: flex;
+  flex-direction: row;
+  gap: 4px; /* 圖示和輸入框之間的距離 */
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+
+.leading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px; /* 保持容器大小 */
+  height: 48px;
+  padding: 12px; /* 控制圖示本身的大小和間距 */
+}
+.icon2 { /* search-bar 左側圖示 */
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.content { /* input 的容器 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1; /* 佔滿剩餘空間 */
+  position: relative;
+}
+
+input.supporting-text {
+  color: var(--schemes-on-surface-variant, #49454f);
+  text-align: left;
+  font-family: var(--m3-body-large-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--m3-body-large-font-size, 18px); /* 根據截圖略微調大字號，原為16px */
+  line-height: var(--m3-body-large-line-height, 24px);
+  letter-spacing: var(--m3-body-large-letter-spacing, 0.5px);
+  font-weight: var(--m3-body-large-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  padding: 8px 4px; /* 微調 padding */
+}
+input.supporting-text::placeholder {
+    color: #888; /* 調整 placeholder 顏色以符合截圖 */
+}
+
+.trailing-elements {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.action-button._1st-trailing-icon { /* search-bar 右側按鈕 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px; /* 保持容器大小 */
+  height: 48px;
+  padding: 12px; /* 控制圖示本身的大小和間距 */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.action-button._1st-trailing-icon:hover {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.icon3 { /* search-bar 右側圖示 */
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* 移除不再使用的原 .icon-button 和 .home 的絕對定位（現已在 .page-header-fixed 內）*/
+/* 例如：
+.icon-button { (指原來的右上角那個，不是 header-icon-button)
+  position: static; 或 display: none; 如果不再使用
+}
+.home { (指原來的右上角那個，不是 home-icon)
+  position: static; 或 display: none; 如果不再使用
+}
+*/
